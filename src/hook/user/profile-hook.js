@@ -38,11 +38,11 @@ const ProfileHook = () => {
 
     const handelSubmit = async () => {
 
-        let body
+        let body={};
         if (user.email === email) {
             body = {
                 name,
-                phone
+                phone,
             }
         } else {
             body = {
@@ -55,17 +55,18 @@ const ProfileHook = () => {
         await dispatch(updateUserProfileData(body))
         setLoading(false)
         setShow(false);
-        //   window.location.reload(false);
+          // window.location.reload(false);
     }
 
     const res = useSelector(state => state.authReducer.userProfile)
+    // console.log(res)
+
     useEffect(() => {
         if (loading === false) {
-            console.log(res)
             if (res && res.status === 200) {
                 notify("تم الحديث بنجاح", "success")
 
-                localStorage.setItem("user", JSON.stringify(res.data.data.user))
+                localStorage.setItem("user", JSON.stringify(res.data.data))
                 setTimeout(() => {
                     window.location.reload(false);
                 }, 1500);

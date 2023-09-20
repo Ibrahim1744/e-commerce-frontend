@@ -6,7 +6,6 @@ import brand3 from "../../images/brand3.png";
 import { Container, Row, Spinner } from 'react-bootstrap';
 
 const BrandContainer = ({ data,loading }) => {
-   
     return (
         <Container>
             <div className="admin-content-text mt-2 ">كل الماركات</div>
@@ -16,6 +15,8 @@ const BrandContainer = ({ data,loading }) => {
                     loading === false ? (
                         data ? (
                             data.map((item, index) => {
+                              console.log(item.image);
+
                                 return (<BrandCard id={item._id} key={index} img={item.image} />)
                             })
                         ) : <h4>لا يوجد ماركات</h4>

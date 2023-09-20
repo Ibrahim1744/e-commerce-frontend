@@ -64,7 +64,7 @@ export const deleteUserAddress = (id) => async (dispatch) => {
 //get one user Address
 export const getOneUserAddress = (id) => async (dispatch) => {
     try {
-        const response = await useGetDataToken(`/api/v1/addresses/${id}`);
+        const response = await useGetDataToken(`/api/v1/addresses/`);
 
         dispatch({
             type: GET_ONE_USER_ADDRESS,

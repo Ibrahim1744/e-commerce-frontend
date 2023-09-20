@@ -17,18 +17,21 @@ const ViewProductsDetalisHook = (prodID) => {
     const productLike = useSelector((state) => state.allproducts.productLike)
     //to show products item
     let item = [];
-    if (oneProducts.data)
-        item = oneProducts.data;
-    else
-        item = []
+    if (oneProducts.data){
+      item = oneProducts.data;
 
+    }
+    else{
+      item = []
+
+    }
     useEffect(() => {
         if (item.category)
-            dispatch(getOneCategory(item.category))
+            dispatch(getOneCategory(item.category._id))
         if (item.brand)
             dispatch(getOneBrand(item.brand))
         if (item.category)
-            dispatch(getProductLike(item.category))
+            dispatch(getProductLike(item.category._id))
 
     }, [item])
 

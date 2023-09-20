@@ -26,8 +26,8 @@ const EditRateHook = (review) => {
     const handelEdit = async () => {
         setLoading(true)
         await dispatch(updateReviewOnProduct(review._id, {
-            review: newRateText,
-            rating: newRateValue
+          title: newRateText,
+          ratings: newRateValue
         }))
         setLoading(false)
         handleCloseEdit();

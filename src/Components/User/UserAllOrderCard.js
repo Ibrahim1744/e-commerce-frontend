@@ -3,7 +3,7 @@ import { Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import mobile from '../../images/mobile.png'
 const UserAllOrderCard = ({ item }) => {
-    
+    console.log(item.product);
     return (
         <div>
 
@@ -18,13 +18,13 @@ const UserAllOrderCard = ({ item }) => {
                     <div className="d-inline pt-2 cat-title">
                         {item.product.title || ''}
                     </div>
-                    <div className="d-inline pt-2 cat-rate me-2">{item.product.ratingsAverage ?
-                        item.product.ratingsAverage : 0}</div>
-                    <div className="rate-count d-inline p-1 pt-2">({`${item.product.ratingsQuantity || 0} تقييم`})</div>
+                    {/* <div className="d-inline pt-2 cat-rate me-2">{item.product.ratingsAverage ?
+                        item.product.ratingsAverage : 0}</div> */}
+                    {/* <div className="rate-count d-inline p-1 pt-2">({`${item.product.ratingsQuantity || 0} تقييم`})</div> */}
                     <div className="mt-3 d-flex">
                         <div className="cat-text mt-1  d-inline">الكميه</div>
                         <input
-                            value={item.count}
+                            value={item.quantity}
                             className="mx-2 "
                             type="number"
                             style={{ width: "40px", height: "30px" }}

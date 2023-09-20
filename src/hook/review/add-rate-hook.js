@@ -34,10 +34,11 @@ const AddRateHook = (id) => {
         }
         setLoading(true)
         await dispatch(createReview(id, {
-            review: rateText,
-            rating: rateValue
+            title: rateText,
+            ratings: rateValue
         }))
         setLoading(false)
+        console.log("done");
     }
 
     const res = useSelector(state => state.reviewReducer.createView)

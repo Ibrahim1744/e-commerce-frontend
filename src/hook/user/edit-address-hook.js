@@ -73,7 +73,7 @@ const EditAddressHook = (id) => {
                     navigate('/user/addresses')
                 }, 1000);
             } else {
-                notify("فشل فى عملية التعديل", "error")
+                notify("...جاري العمل عليها", "error")
             }
         }
     }, [loadingEdit])

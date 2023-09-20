@@ -9,7 +9,7 @@ import { clearAllCartItem, deleteCartItem, updateCartItem } from './../../redux/
 const DeleteCartHook = (item) => {
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(true)
-    const [itemCount, setItemCount] = useState(0)
+    const [itemCount, setItemCount] = useState(1)
 
     const handelDeleteCart = async () => {
         setLoading(true)
@@ -21,7 +21,7 @@ const DeleteCartHook = (item) => {
     }
     useEffect(() => {
         if (item)
-            setItemCount(item.count)
+            setItemCount(item.quantity)
     }, [])
     const res = useSelector(state => state.cartReducer.clearCart)
     useEffect(() => {
@@ -52,7 +52,7 @@ const DeleteCartHook = (item) => {
 
     const handeleUpdateCart = async () => {
         await dispatch(updateCartItem(item._id, {
-            count: itemCount
+          quantity: itemCount
         }))
 
         window.location.reload(false);

@@ -30,27 +30,23 @@ const RegisterHook = () => {
         setConfirmPassword(e.target.value)
     }
 
-    const validationValues = () => {
-        if (name === "") {
-            notify("من فضلك ادخل اسم المستخدم", "error")
-            return;
-        }
-        if (phone.length <= 10) {
-            notify("من فضلك ادخل رقم هاتف صحيح", "error")
-            return;
-        }
-        if (password != confirmPassword) {
-            notify("من فضلك تاكيد من كلمه السر", "error")
-            return;
-        }
 
-    }
 
-    const res = useSelector(state => state.authReducer.createUser)
-
+    
     //save data
     const OnSubmit = async () => {
-        validationValues();
+      if (name === "") {
+        notify("من فضلك ادخل اسم المستخدم", "error")
+        return;
+    }
+    if (phone.length <= 10) {
+        notify("من فضلك ادخل رقم هاتف صحيح", "error")
+        return;
+    }
+    if (password != confirmPassword) {
+        notify("من فضلك تاكيد من كلمه السر", "error")
+        return;
+    }
         setLoading(true)
         await dispatch(createNewUser({
             name,
@@ -61,7 +57,21 @@ const RegisterHook = () => {
         }))
         setLoading(false)
     }
+    const res = useSelector(state => state.authReducer.createUser)
 
+    
+      // if(res?.data?.errors[0].msg=== 'E-mail already in user'){
+      //   notify("E-mail already taken" , "error")
+      // }
+  
+      // if(res?.data?.errors[0].msg=== 'accept only egypt phone numbers'){
+      //   notify("يجب ان يكون الرقم مصري مكون من 11 رقم", "error")
+      // }
+      // if(res?.data?.errors[0].msg=== 'must be at least 6 chars'){
+      //   notify("يجب ان لاقل كلمه السر عن 6 احرف او ارقام", "error")
+      // }
+    
+    
     useEffect(() => {
         if (loading === false) {
             if (res) {
@@ -75,16 +85,16 @@ const RegisterHook = () => {
                 }
 
                 if (res.data.errors) {
-                    if (res.data.errors[0].msg === "E-mail already in use")
+                    if (res.data.errors[0].msg === "E-mail already in user")
                         notify("هذا الايميل مسجل من قبل", "error")
                 }
                 if (res.data.errors) {
-                    if (res.data.errors[0].msg === "accept only egypt phone numbers")
+                    if (res.data.errors[0].msg === "Invalid phone number only accepted Egy and SA Phone numbers")
                         notify("يجب ان يكون الرقم مصري مكون من 11 رقم", "error")
                 }
 
                 if (res.data.errors) {
-                    if (res.data.errors[0].msg === "must be at least 6 chars")
+                    if (res.data.errors[0].msg === "Password must be at least 6 characters")
                         notify("يجب ان لاقل كلمه السر عن 6 احرف او ارقام", "error")
                 }
 

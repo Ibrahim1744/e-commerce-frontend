@@ -51,7 +51,6 @@ function App() {
           <Route path="/allbrand" element={<AllBrandPage />} />
           <Route path="/products" element={<ShopProductsPage />} />
           <Route path="/products/:id" element={<ProductDetalisPage />} />
-          <Route path="/cart" element={<CartPage />} />
           <Route path="/user/forget-password" element={<ForgetPasswordPage />} />
           <Route path="/user/verify-code" element={<VerifyPasswordPage />} />
           <Route path="/user/reset-password" element={<RsetPasswordPage />} />
@@ -74,6 +73,7 @@ function App() {
           </Route>
 
           <Route element={<ProtectedRoute auth={isUser} />}>
+          <Route path="/cart" element={<CartPage />} />
             <Route path="/user/allorders" element={<UserAllOrdersPage />} />
             <Route path="/order/paymethoud" element={<ChoosePayMethoudPage />} />
             <Route path="/user/favoriteproducts" element={<UserFavoriteProductsPage />} />

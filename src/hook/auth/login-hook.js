@@ -47,6 +47,11 @@ const LoginHook = () => {
                     localStorage.removeItem("token")
                     localStorage.removeItem("user")
                 }
+                if (res.data.errors[0].msg === "Password must be at least 6 characters") {
+                  localStorage.removeItem("token")
+                  localStorage.removeItem("user")
+                  notify("كلمة السر او الايميل خطا", "error")
+              }
 
                 if (res.data.message === "Incorrect email or password") {
                     localStorage.removeItem("token")
